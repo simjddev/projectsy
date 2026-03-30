@@ -473,12 +473,26 @@ a {
 .footer-bar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.6rem 1.1rem;
   flex-wrap: wrap;
   padding: 0;
   color: rgba(18, 18, 18, 0.48);
   font-size: 0.82rem;
   letter-spacing: 0.01em;
+}
+
+.footer-meta,
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem 1.1rem;
+  flex-wrap: wrap;
+}
+
+.footer-links {
+  justify-content: flex-end;
+  margin-left: auto;
 }
 
 .footer-bar p {
@@ -631,8 +645,19 @@ a {
   }
 
   .footer-bar {
+    justify-content: flex-start;
     gap: 0.75rem 1rem;
     font-size: 0.92rem;
+  }
+
+  .footer-meta,
+  .footer-links {
+    gap: 0.75rem 1rem;
+  }
+
+  .footer-links {
+    margin-left: 0;
+    justify-content: flex-start;
   }
 
   .legal-card {

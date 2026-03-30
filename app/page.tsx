@@ -122,10 +122,15 @@ export default function HomePage() {
 
       <footer className="footer" aria-label="Fußzeile">
         <div className="footer-bar">
-          <p>© 2026 projectsy.xyz</p>
-          <a href="mailto:hi@projectsy.xyz">hi@projectsy.xyz</a>
-          <Link href="/datenschutz">Datenschutz</Link>
-          <Link href="/impressum">Impressum</Link>
+          <div className="footer-meta">
+            <p>© 2026 projectsy.xyz</p>
+            <a href="mailto:hi@projectsy.xyz">hi@projectsy.xyz</a>
+          </div>
+
+          <div className="footer-links">
+            <Link href="/datenschutz">Datenschutz</Link>
+            <Link href="/impressum">Impressum</Link>
+          </div>
         </div>
       </footer>
     </main>
