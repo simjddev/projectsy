@@ -21,16 +21,18 @@ export function LocaleSwitcher({ currentLocale, label }: LocaleSwitcherProps) {
 
   return (
     <div className="locale-switcher" aria-label={label} role="group">
-      {locales.map((locale: Locale) => (
-        <button
-          key={locale}
-          type="button"
-          className={`locale-button${locale === currentLocale ? " locale-button--active" : ""}`}
-          onClick={() => handleLocaleChange(locale)}
-          aria-pressed={locale === currentLocale}
-        >
-          {locale.toUpperCase()}
-        </button>
+      {locales.map((locale: Locale, index) => (
+        <span key={locale} className="locale-option">
+          {index > 0 ? <span className="locale-separator">/</span> : null}
+          <button
+            type="button"
+            className={`locale-button${locale === currentLocale ? " locale-button--active" : ""}`}
+            onClick={() => handleLocaleChange(locale)}
+            aria-pressed={locale === currentLocale}
+          >
+            {locale.toUpperCase()}
+          </button>
+        </span>
       ))}
     </div>
   );

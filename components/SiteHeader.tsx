@@ -1,26 +1,41 @@
 import Link from "next/link";
 
-import { Locale, content, withLocale } from "@/lib/i18n";
+import { Locale, content, createMailtoHref, withLocale } from "@/lib/i18n";
 
-import { LocaleSwitcher } from "./LocaleSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
 
-export function SiteHeader({ locale }: { locale: Locale }) {
+type SiteHeaderProps = {
+  locale: Locale;
+  secondaryLinkHref?: string;
+  secondaryLinkLabel?: string;
+};
+
+export function SiteHeader({
+  locale,
+  secondaryLinkHref,
+  secondaryLinkLabel,
+}: SiteHeaderProps) {
   const copy = content[locale];
 
   return (
     <header className="topbar">
-      <Link className="brand" href={withLocale(locale)} aria-label={copy.nav.brandAriaLabel}>
-        <span className="brand-word">
-          <span className="brand-project">PROJECT</span>
-          <span className="brand-s">S</span>
-          <span className="brand-y">Y</span>
-        </span>
-      </Link>
+      <div className="topbar-start">
+        <Link className="brand" href={withLocale(locale)} aria-label={copy.nav.brandAriaLabel}>
+          <span className="brand-word">
+            <span className="brand-project">PROJECT</span>
+            <span className="brand-s">S</span>
+            <span className="brand-y">Y</span>
+          </span>
+        </Link>
+        {secondaryLinkHref && secondaryLinkLabel ? (
+          <Link className="brand-secondary-link" href={secondaryLinkHref}>
+            {secondaryLinkLabel}
+          </Link>
+        ) : null}
+      </div>
 
       <nav className="topnav" aria-label={copy.nav.primaryLabel}>
-        <a href="mailto:hi@projectsy.xyz">{copy.nav.contact}</a>
-        <LocaleSwitcher currentLocale={locale} label={copy.nav.language} />
+        <a href={createMailtoHref()}>{copy.nav.contact}</a>
         <ThemeToggle darkLabel={copy.nav.themeToDark} lightLabel={copy.nav.themeToLight} />
       </nav>
     </header>

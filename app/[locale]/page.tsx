@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { content, isLocale } from "@/lib/i18n";
+import { content, isLocale, withLocale } from "@/lib/i18n";
 
 export default async function LocalizedHomePage({
   params,
@@ -34,7 +34,7 @@ export default async function LocalizedHomePage({
             <a
               key={card.title}
               className={`card card--${card.variant}`}
-              href={card.href}
+              href={card.external ? card.href : withLocale(locale, card.href)}
               target={card.external ? "_blank" : undefined}
               rel={card.external ? "noreferrer" : undefined}
             >
@@ -51,11 +51,6 @@ export default async function LocalizedHomePage({
               <div className="card-body">
                 <p>{card.subtitle}</p>
                 <h2>{card.title}</h2>
-                {card.variant === "overview" ? (
-                  <div className="card-cta-row" aria-hidden="true">
-                    <span className="card-button">{copy.home.overviewButton}</span>
-                  </div>
-                ) : null}
               </div>
             </a>
           ))}

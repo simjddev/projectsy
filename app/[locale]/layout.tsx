@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { DocumentLocaleSync } from "@/components/DocumentLocaleSync";
 import { content, isLocale, locales } from "@/lib/i18n";
 
 export async function generateStaticParams() {
@@ -44,10 +43,5 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  return (
-    <>
-      <DocumentLocaleSync locale={locale} />
-      {children}
-    </>
-  );
+  return children;
 }

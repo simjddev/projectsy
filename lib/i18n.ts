@@ -3,6 +3,12 @@ export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = "de";
 export const localeCookieName = "projectsy-locale";
+export const contactEmail = "hi@projectsy.xyz";
+
+export function createMailtoHref(subject?: string) {
+  const encodedSubject = subject ? `?subject=${encodeURIComponent(subject)}` : "";
+  return `mailto:${contactEmail}${encodedSubject}`;
+}
 
 export function isLocale(value: string): value is Locale {
   return locales.includes(value as Locale);
@@ -49,7 +55,6 @@ type LocalizedContent = {
     ariaLabel: string;
     heroTitle: string;
     heroDescription: string;
-    overviewButton: string;
     cards: {
       title: string;
       subtitle: string;
@@ -59,7 +64,20 @@ type LocalizedContent = {
       external: boolean;
     }[];
   };
+  overview: {
+    kicker: string;
+    backLabel: string;
+    products: {
+      title: string;
+      subtitle: string;
+      href: string;
+      cta: string;
+      variant: "pizza" | "fairdient" | "websites";
+      external: boolean;
+    }[];
+  };
   footer: {
+    ariaLabel: string;
     copyright: string;
     email: string;
     privacy: string;
@@ -98,10 +116,9 @@ export const content: Record<Locale, LocalizedContent> = {
     },
     home: {
       ariaLabel: "Projekte",
-      heroTitle: "Digitale Produkte mit Geschmack, Klarheit und Dynamik.",
+      heroTitle: "Digitale Produkte für den Alltag.",
       heroDescription:
-        "Wir entwickeln und launchen fokussierte Software-Produkte mit ruhigem Branding, klarer Struktur und präzisen Oberflächen.",
-      overviewButton: "Los geht's",
+        "Wir entwickeln Apps und Software mit klarer Struktur, durchdachtem Design und echtem Nutzen.",
       cards: [
         {
           title: "PizzaApp",
@@ -114,24 +131,55 @@ export const content: Record<Locale, LocalizedContent> = {
         {
           title: "FairDient",
           subtitle: "HR-SaaS in Entwicklung",
-          href: "mailto:hi@projectsy.xyz?subject=FairDient",
+          href: createMailtoHref("FairDient"),
           cta: "Zur App",
           variant: "fairdient",
           external: true,
         },
         {
           title: "Alle Produkte",
-          subtitle: "Übersicht im neuen Tab",
-          href: "https://projectsy.xyz",
+          subtitle: "Lokale Übersicht",
+          href: "/overview",
           cta: "Zur Übersicht",
           variant: "overview",
+          external: false,
+        },
+      ],
+    },
+    overview: {
+      kicker: "Produkte",
+      backLabel: "Zur Startseite",
+      products: [
+        {
+          title: "PizzaApp",
+          subtitle: "KI-Kochbegleiter",
+          href: "https://pizza.projectsy.xyz",
+          cta: "App öffnen",
+          variant: "pizza",
+          external: true,
+        },
+        {
+          title: "FairDient",
+          subtitle: "HR-SaaS in Entwicklung",
+          href: createMailtoHref("FairDient"),
+          cta: "Kontakt aufnehmen",
+          variant: "fairdient",
+          external: true,
+        },
+        {
+          title: "Websites",
+          subtitle: "Für kleine Unternehmen",
+          href: createMailtoHref("Website für kleines Unternehmen"),
+          cta: "Projekt anfragen",
+          variant: "websites",
           external: true,
         },
       ],
     },
     footer: {
+      ariaLabel: "Fußbereich",
       copyright: "© 2026 projectsy.xyz",
-      email: "hi@projectsy.xyz",
+      email: contactEmail,
       privacy: "Datenschutz",
       imprint: "Impressum",
     },
@@ -180,10 +228,9 @@ export const content: Record<Locale, LocalizedContent> = {
     },
     home: {
       ariaLabel: "Projects",
-      heroTitle: "Digital products with taste, clarity, and momentum.",
+      heroTitle: "Focused digital products for real life.",
       heroDescription:
-        "We build and launch focused software products with calm branding, clear structure, and precise interfaces.",
-      overviewButton: "Get started",
+        "We build apps and software with clear structure, thoughtful design, and lasting usefulness.",
       cards: [
         {
           title: "PizzaApp",
@@ -196,24 +243,55 @@ export const content: Record<Locale, LocalizedContent> = {
         {
           title: "FairDient",
           subtitle: "HR SaaS in progress",
-          href: "mailto:hi@projectsy.xyz?subject=FairDient",
+          href: createMailtoHref("FairDient"),
           cta: "Open app",
           variant: "fairdient",
           external: true,
         },
         {
           title: "All products",
-          subtitle: "Overview in a new tab",
-          href: "https://projectsy.xyz",
+          subtitle: "Local overview",
+          href: "/overview",
           cta: "View overview",
           variant: "overview",
+          external: false,
+        },
+      ],
+    },
+    overview: {
+      kicker: "Products",
+      backLabel: "Back to home",
+      products: [
+        {
+          title: "PizzaApp",
+          subtitle: "AI cooking companion",
+          href: "https://pizza.projectsy.xyz",
+          cta: "Open app",
+          variant: "pizza",
+          external: true,
+        },
+        {
+          title: "FairDient",
+          subtitle: "HR SaaS in progress",
+          href: createMailtoHref("FairDient"),
+          cta: "Get in touch",
+          variant: "fairdient",
+          external: true,
+        },
+        {
+          title: "Websites",
+          subtitle: "For small businesses",
+          href: createMailtoHref("Website for small business"),
+          cta: "Start a project",
+          variant: "websites",
           external: true,
         },
       ],
     },
     footer: {
+      ariaLabel: "Footer",
       copyright: "© 2026 projectsy.xyz",
-      email: "hi@projectsy.xyz",
+      email: contactEmail,
       privacy: "Privacy",
       imprint: "Legal notice",
     },

@@ -35,7 +35,14 @@ export function middleware(request: NextRequest) {
   const firstSegment = segments[0];
 
   if (firstSegment && isLocale(firstSegment)) {
-    const response = NextResponse.next();
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set("x-current-locale", firstSegment);
+
+    const response = NextResponse.next({
+      request: {
+        headers: requestHeaders,
+      },
+    });
     response.cookies.set(localeCookieName, firstSegment, {
       maxAge: 60 * 60 * 24 * 365,
       path: "/",
