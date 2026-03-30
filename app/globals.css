@@ -102,12 +102,15 @@ a {
 
 .topnav {
   display: inline-flex;
+  align-items: center;
   gap: 0.9rem;
+  flex-wrap: wrap;
 }
 
 .topnav a,
 .pill,
-.theme-toggle {
+.theme-toggle,
+.locale-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -125,9 +128,36 @@ a {
 
 [data-theme="dark"] .topnav a,
 [data-theme="dark"] .pill,
-[data-theme="dark"] .theme-toggle {
+[data-theme="dark"] .theme-toggle,
+[data-theme="dark"] .locale-button {
   background: rgba(255, 255, 255, 0.06);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+}
+
+.locale-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset;
+}
+
+.locale-button {
+  min-height: 2.6rem;
+  min-width: 2.95rem;
+  padding: 0.5rem 0.85rem;
+  background: transparent;
+  box-shadow: none;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.locale-button--active {
+  background: rgba(18, 18, 18, 0.08);
 }
 
 .layout {
@@ -443,6 +473,16 @@ a {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+[data-theme="dark"] .locale-switcher {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .locale-button--active {
+  background: rgba(255, 255, 255, 0.14);
+}
+
 [data-theme="dark"] .hero-card:hover {
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3);
 }
@@ -606,6 +646,10 @@ a {
     width: 100%;
     overflow-x: auto;
     padding-bottom: 0.1rem;
+  }
+
+  .locale-switcher {
+    flex: 0 0 auto;
   }
 
   .hero-card {
