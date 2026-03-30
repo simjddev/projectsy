@@ -60,7 +60,7 @@ type LocalizedContent = {
       subtitle: string;
       href: string;
       cta: string;
-      variant: "pizza" | "fairdient" | "overview";
+      variant: "pizza" | "fairdient" | "websites" | "overview";
       external: boolean;
     }[];
   };
@@ -129,11 +129,11 @@ export const content: Record<Locale, LocalizedContent> = {
           external: true,
         },
         {
-          title: "FairDient",
-          subtitle: "HR-SaaS in Entwicklung",
-          href: createMailtoHref("FairDient"),
-          cta: "Zur App",
-          variant: "fairdient",
+          title: "Websites",
+          subtitle: "Für kleine Unternehmen",
+          href: createMailtoHref("Website für kleines Unternehmen"),
+          cta: "Projekt anfragen",
+          variant: "websites",
           external: true,
         },
         {
@@ -159,19 +159,19 @@ export const content: Record<Locale, LocalizedContent> = {
           external: true,
         },
         {
-          title: "FairDient",
-          subtitle: "HR-SaaS in Entwicklung",
-          href: createMailtoHref("FairDient"),
-          cta: "Kontakt aufnehmen",
-          variant: "fairdient",
-          external: true,
-        },
-        {
           title: "Websites",
           subtitle: "Für kleine Unternehmen",
           href: createMailtoHref("Website für kleines Unternehmen"),
           cta: "Projekt anfragen",
           variant: "websites",
+          external: true,
+        },
+        {
+          title: "FairDient",
+          subtitle: "HR-SaaS in Entwicklung",
+          href: createMailtoHref("FairDient"),
+          cta: "Kontakt aufnehmen",
+          variant: "fairdient",
           external: true,
         },
       ],
@@ -241,11 +241,11 @@ export const content: Record<Locale, LocalizedContent> = {
           external: true,
         },
         {
-          title: "FairDient",
-          subtitle: "HR SaaS in progress",
-          href: createMailtoHref("FairDient"),
-          cta: "Open app",
-          variant: "fairdient",
+          title: "Websites",
+          subtitle: "For small businesses",
+          href: createMailtoHref("Website for small business"),
+          cta: "Start a project",
+          variant: "websites",
           external: true,
         },
         {
@@ -271,19 +271,19 @@ export const content: Record<Locale, LocalizedContent> = {
           external: true,
         },
         {
-          title: "FairDient",
-          subtitle: "HR SaaS in progress",
-          href: createMailtoHref("FairDient"),
-          cta: "Get in touch",
-          variant: "fairdient",
-          external: true,
-        },
-        {
           title: "Websites",
           subtitle: "For small businesses",
           href: createMailtoHref("Website for small business"),
           cta: "Start a project",
           variant: "websites",
+          external: true,
+        },
+        {
+          title: "FairDient",
+          subtitle: "HR SaaS in progress",
+          href: createMailtoHref("FairDient"),
+          cta: "Get in touch",
+          variant: "fairdient",
           external: true,
         },
       ],
